@@ -2,22 +2,26 @@
 # Each line contains just 2 numbers with the first number being the altitude of the rocket
 # and the second being the time at which that altitude was reached. (the file has no header)
 # Also, depending on the arduino code, there might be big number of lines in the file containing the same altitude
-# this happens if the data logging is not stopped when the rocket lands. It is pretty easy to find and those values
+# this happens if the data logging is not stopped when the rocket lands. It is pretty easy to find and delete those values
 # so that the plot will look cleaner.
 
 import matplotlib.pyplot as plt
 import pandas as pd
 
+#reading the data and saving them in a Dataframe
 data = pd.read_csv('datalog.txt', delimiter='\s+', index_col=False, header=None)
 
+#setting lists for altitude and time 
 altitude = list(data.iloc[:, 0])
 time = list(data.iloc[:, 1])
 
+#finding max altitude and the time at which it was reached
 max_alt = max(altitude)
 max_alt_index = altitude.index(max_alt)
 time_max_alt = time[max_alt_index]
 print("Max Altitude : " + str(max_alt) + "meters  " + "And it was reached at : " + str(time_max_alt) + "seconds")
 
+#plotting altitude vs time 
 plot = plt.plot(time, altitude)
 plt.xlabel("Time")
 plt.ylabel("Altitude")
