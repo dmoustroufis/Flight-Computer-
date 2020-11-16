@@ -27,7 +27,7 @@ it is powered by a 9V battery with the voltage being reduced to 5V by an externa
 #include <Adafruit_BMP280.h>
 
 
-const int CS = 4  ;   //CS pin if the SD card reader 
+const int CS = 4  ;   //CS pin of the SD card reader 
 
 double alt ;
 
@@ -55,7 +55,7 @@ void setup() {
     Serial.println("Could not find a valid BMP280 sensor, check wiring!");
     while (1);
   }else{
-    digitalWrite(LED_BUILTIN , HIGH);  //to confirm visually that SD is ok
+    digitalWrite(LED_BUILTIN , HIGH);  //to confirm visually that BMP280 is ok
     delay(5000);
     digitalWrite(LED_BUILTIN , LOW); 
     }
