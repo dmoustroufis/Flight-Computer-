@@ -15,7 +15,9 @@
   BSD license, all text above must be included in any redistribution
  ***************************************************************************/
 /*
-This is the V1 of the code for the data logger.
+This is the V1 of the code for the data logger. Its purpose is to write the altitude values on a microSD card in order to find the highest altitude the rocket reached
+The device is composed of an Arduino Nano, a BMP280 sensor and a microSD card reader
+it is powered by a 9V battery with the voltage being reduced to 5V by an external regulator.
 */
 
 
@@ -58,7 +60,7 @@ void setup() {
     digitalWrite(LED_BUILTIN , LOW); 
     }
 
-  /* Default settings from datasheet. */
+  /* Default settings from datasheet. Might have to change the standby time for the v2 of the contoller */
   bmp.setSampling(Adafruit_BMP280::MODE_NORMAL,     /* Operating Mode. */
                   Adafruit_BMP280::SAMPLING_X2,     /* Temp. oversampling */
                   Adafruit_BMP280::SAMPLING_X16,    /* Pressure oversampling */
